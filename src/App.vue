@@ -3,9 +3,13 @@
 		<div class="overlay" @click="closeAll"></div>
 		<div class="content">
 			<b-container fluid>
-				<b-row class="my-1">
+				<b-row class="my-1" align-h="around">
 						<template v-for="book in RefBooks" >
 							<b-col sm="3" v-bind:key="book.id">
+								<b-form-group
+										:label="book.selectHeader"
+										class="refBook-label"
+								>
 								<b-form-input
 										v-model="book.activeSelectItem"
 										@focus="changeOptionsList(book.id)"
@@ -17,6 +21,7 @@
 													@changeItem="changeItem"
 													:isSelectVisible="book.isSelectVisible"
 													:selectHeader="book.selectHeader"/>
+								</b-form-group>
 							</b-col>
 						</template>
 				</b-row>

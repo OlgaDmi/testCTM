@@ -1,5 +1,5 @@
 <template>
-  <div class="refBook" v-show="isSelectVisible">
+  <div class="refBook" v-if="isSelectVisible">
 		<div class="refBook-select">
 			<div class="refBook-option refBook-option-head" @click="changeList">{{ selectHeader }} <b-icon icon="x" font-scale="1.5" style="color: #495057;"></b-icon> </div>
 			<div class="refBook-option"  v-for="item in options" :key="item.id" @click="changeOptionsItem(item.description)">{{ item.description }}</div>
@@ -22,11 +22,9 @@ export default {
 		}
 	},
 	methods:  {
-		// // open and close All statuses list
 		changeList: function () {
 			this.$emit('changeOptionsList', this.index)
 		},
-		// change chosen list item in select
 		changeOptionsItem: function (item) {
 			this.$emit('changeItem', this.index, item);
 			this.$emit('changeOptionsList', this.index);
